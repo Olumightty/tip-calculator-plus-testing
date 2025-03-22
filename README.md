@@ -1,77 +1,54 @@
-# Frontend Mentor - Tip calculator app solution
+# React + TypeScript + Vite
 
-This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Table of contents
+Currently, two official plugins are available:
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Overview
+## Expanding the ESLint configuration
 
-### The challenge
-
-Users should be able to:
-
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Calculate the correct tip and total cost of the bill per person
-
-### Screenshot
-
-![Desktop](screenshots/desktop.jpg)
-
-![Mobile](screenshots/mobile.jpg)
-
-### Links
-
-- Solution URL: [https://www.frontendmentor.io/solutions/tip-calculator-app-using-reactjs-_R5acdgENF](https://www.frontendmentor.io/solutions/tip-calculator-app-using-reactjs-_R5acdgENF)
-- Live Site URL: [https://sensational-bombolone-377907.netlify.app](https://sensational-bombolone-377907.netlify.app)
-
-## My process
-
-### Built with
-
-- [React](https://reactjs.org/) - JS library
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-
-### What I learned
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
 ```js
-useEffect(() => {}
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
-tip = tip.toFixed(2);
-total = total.toFixed(2);
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-```js
-const [Bill, setBill] = useState("");
-
-onChange={(e) => setBill(e.target.value)}
-```
-
-### Continued development
-
-- Mobile-first workflow
-
-### Useful resources
-
-- [React ](https://reactjs.org/docs/hooks-effect.html) - This helped me for using useEffect hook.
-
-## Author
-
-- Website - [Krishnanand A](https://krishnanand-a.web.app)
-- Frontend Mentor - [@krishnanand654](https://www.frontendmentor.io/profile/krishnanand654)
