@@ -4,6 +4,12 @@ import Result from "./Result"
 import { CalculatorContextProps, useCalculator } from "./ValuesProvider"
 
 
+export const ResetButton = ({onClick}: {onClick: () => void}) => {
+  return (
+    <button onClick={onClick} className="bg-(--green-400) text-(--green-900) cursor-pointer rounded-lg py-2 mt-5 font-bold hover:opacity-50">Reset</button>
+  )
+}
+
 const Output = () => {
     const {bill, tip, people, reset} = useCalculator() as CalculatorContextProps
   return (
@@ -12,7 +18,7 @@ const Output = () => {
             <Result title="Tip Amount" value={tipAmountPerPerson(bill, tip, people)} />
             <Result title="Total" value={totalPerPerson(bill, tip, people)}/>
         </div>
-        <button onClick={reset} className="bg-(--green-400) text-(--green-900) cursor-pointer rounded-lg py-2 mt-5 font-bold hover:opacity-50">Reset</button>
+        <ResetButton onClick={reset}/>
     </section>
   )
 }

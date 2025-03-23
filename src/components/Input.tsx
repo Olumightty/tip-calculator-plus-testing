@@ -7,7 +7,7 @@ const Input = ({title, value, setValue, placeholder, logo, label}:{
     setValue: (e: number) => void,
     placeholder: string,
     logo: string,
-    label: string
+    label: string,
 }) => {
     const isPeopleZero = title === "People" && value === "0"
   return (
